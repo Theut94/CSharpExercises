@@ -1,55 +1,114 @@
 ﻿namespace ClassLibrary1;
 
-public class Service: IService
+public class Service : IService
 {
     public object FindElement(IEnumerable<object> data, int index)
     {
-        throw new NotImplementedException();
+        return data.ElementAt(index);
     }
 
     public bool AreTheseStringsEqual(string str1, string str2)
     {
-        throw new NotImplementedException();
+        return str1.Equals(str2);
     }
 
     public int Factorial(int n)
     {
-        throw new NotImplementedException();
+        if (n == 1)
+            return n;
+        else
+        {
+            return n * Factorial(n - 1);
+        }
     }
 
     public int Fibonacci(int n)
     {
-        throw new NotImplementedException();
+        if (n <= 1)
+        {
+            return n;
+        }
+        else
+            return (Fibonacci(n - 1) + Fibonacci(n - 2));
+
     }
 
     public IEnumerable<int> FindValuesGreaterThan(IEnumerable<int> data, int value)
     {
-        throw new NotImplementedException();
+        List<int> list = new List<int>();
+        foreach (int x in data)
+        {
+            if (x > value)
+            {
+                list.Add(x);
+
+            }
+        }
+        return list;
     }
 
     public double FindAverage(IEnumerable<int> data)
     {
-        throw new NotImplementedException();
+        return data.Average();
     }
 
     public string SwapCharacters(string testString, char swapA, char swapB)
     {
-        throw new NotImplementedException();
+        String returnstring = "";
+        for (int i = 0; i < testString.Length; i++)
+        {
+            if (testString.ElementAt(i).Equals(swapA))
+            {
+                returnstring = returnstring + swapB;
+            }
+            else if (testString.ElementAt(i).Equals(swapB))
+            {
+                returnstring = returnstring + swapA;
+            }
+            else
+                returnstring = returnstring + testString.ElementAt(i);
+        }
+        return returnstring;
     }
 
     public int ConvertStringToIntIfValidIntegerValue(string testString)
     {
-        throw new NotImplementedException();
-    }
+        try
+        {
+            return Int32.Parse(testString);
+        }
+        catch (FormatException e)
+        {
+            throw e;
 
-    public object CreateObjectWithPropretyWhichHasAccessors()
+        }
+    }
+    class Cheese
     {
-        throw new NotImplementedException();
+        public int field;
+
+        public int property
+        {
+            get
+            {
+                return field ;
+            }
+            set
+            {
+                field = value;
+            }
+
+        }
+    }
+        public object CreateObjectWithPropretyWhichHasAccessors()
+    {
+      
+        return new Cheese();
     }
 
     public IEnumerable<object> CreateListWithObjectsContainingIntAndItsSquare(IEnumerable<int> data)
     {
-        throw new NotImplementedException();
+        
     }
 
     public Dictionary<int, int> CreateDictionrayWithIntsAndTheirFrequency(IEnumerable<int> data)
